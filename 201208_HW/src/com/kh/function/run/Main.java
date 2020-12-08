@@ -38,12 +38,13 @@ public class Main {
 		System.out.println("성별 입력(M/F)");
 		//scanner로 == 비교가 불가능하다 why? 객체(이 경우 문자열)의 '주소'를 비교하기 때문이다.
 		//이럴때 string에 있는 .equals 메서드를 이용해 문자열 '값'을 비교 가능하다!!!
-		String gender = (sc.next().equals("M")) ? "남성" : "여성";
+		//String gender = (sc.next().equals("M")) ? "남학생" : "여학생";
+		
+		//하지만 문자열이 아닌 문자는 그 값 자체가 동일한지 비교는 가능하다!
+		String gender = (sc.next().charAt(0) == 'M') ? "남학생" : "여학생";
 		System.out.println("성적 입력");
 		double grade = sc.nextDouble();
 		
-		System.out.printf("이름: %s%n학년: %d%n반: %d%n번호: %d%n성별: %s%n성적: %.2f%n", name, schoolYear, classNum, num, gender, grade);
-		
-		
+		System.out.printf("%d학년 %d반 %d번 %s %s은 성적이 %.2f이다." ,schoolYear , classNum, num, gender, name, grade);
 	}
 }
