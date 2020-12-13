@@ -6,7 +6,9 @@ public class testRSP {
 
 	public static void main(String[] args) {
 		testRSP rsp = new testRSP();
-		rsp.test();
+		while(true) {
+			rsp.test();
+		}
 	}
 	
 	public void test() {
@@ -20,16 +22,16 @@ public class testRSP {
 		System.out.println("사용자: "+what(user) + " vs 컴퓨터: " +what(num));
 		System.out.println("============");
 		
-		if(checkNum==100) {
+		//코드가 한줄일 경우 생략이 가능
+		if(checkNum==0)
 			System.out.println("내가 이겼지롱~");
-		}
-		else if(checkNum==0) {
+		else if(checkNum==100)
 			System.out.println("내가 졌다 ㅠㅜ...");
-		}
-		else {
+		else
 			System.out.println("무승부!");
-		}
 		//System.out.println(checkNum);
+		
+		
 	}
 	
 	public int checkWin(int num1, int num2) {
