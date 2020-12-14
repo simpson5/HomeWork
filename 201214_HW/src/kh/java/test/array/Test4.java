@@ -47,6 +47,7 @@ public class Test4 {
 		System.out.println("전화번호 입력 [11자리]");
 		String pNum = sc.next();
 		
+		//beginIndex부터 endIndex까지 출력한다.
 		System.out.println(pNum.substring(0, 3)+"****"+pNum.substring(7, 11));
 	}
 
