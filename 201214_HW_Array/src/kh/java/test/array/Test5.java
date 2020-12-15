@@ -18,9 +18,14 @@ public class Test5 {
 		System.out.println("주민번호 입력 [13자리]");
 		String pNum = sc.next();
 		char[] pNum2 = new char[13];
-		for(int i = 0; i < pNum.length(); i++) {
-			pNum2[i] = pNum.charAt(i);
-		}
+//		for(int i = 0; i < pNum.length(); i++) {
+//			pNum2[i] = pNum.charAt(i);
+//		}
+		
+		//스트링이 배열 형태라고 하지만 한번에 다른 배욜로 카피 할 수 없다!
+		//System.arraycopy(pNum, 0, pNum2, 0, pNum.length());
+		//.toCharArray() 문자 배열로 바꿔줌.
+		System.arraycopy(pNum.toCharArray(), 0, pNum2, 0, 13);
 		
 		for(int i = 7; i < 13; i++) {
 			pNum2[i] = '*';

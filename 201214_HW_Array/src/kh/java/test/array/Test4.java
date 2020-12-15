@@ -23,12 +23,14 @@ public class Test4 {
 		System.out.println("전화번호 입력 [11자리]");
 		String pNum = sc.next();
 		char[] pNum2 = new char[11];
-		for(int i = 0; i < pNum.length(); i++) {
-			pNum2[i] = pNum.charAt(i);
-		}
+//		for(int i = 0; i < pNum.length(); i++) {
+//			pNum2[i] = pNum.charAt(i);
+//		}
 		//스트링 클론이 왜 없지?...
 		//System.arraycopy(pNum, 0, pNum2, 0, pNum.length());
 		//arraycopy도 먹지 않는다!
+		
+		pNum2 = pNum.toCharArray().clone();
 		
 		for(int i = 3; i < 7; i++) {
 			pNum2[i] = '*';
@@ -47,7 +49,10 @@ public class Test4 {
 		System.out.println("전화번호 입력 [11자리]");
 		String pNum = sc.next();
 		
-		System.out.println(pNum.substring(0, 3)+"****"+pNum.substring(7, 11));
+		//beginIndex부터 endIndex까지 출력한다.
+		String result = pNum.substring(0, 3)+"****"+pNum.substring(7, 11);
+		System.out.println(result);
+		//System.out.println(pNum.substring(0, 3)+"****"+pNum.substring(7, 11));
 	}
 
 }

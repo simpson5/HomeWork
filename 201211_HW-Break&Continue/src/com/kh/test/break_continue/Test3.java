@@ -23,16 +23,18 @@ public class Test3 {
 			}
 		}
 		int cnt = 0;
+		
 		for(int i = 1; i < num ;i++) {
 			if(num%i==0) {
 				cnt++;
 			}
 		}
+		
 		if(cnt==1) {
-			System.out.println("소수 입니다.");
+			System.out.println("약수의 갯수:"+(cnt+1)+"/ 소수 입니다.");
 		}
 		else {
-			System.out.println("소수가 아닙니다.");
+			System.out.println("약수의 갯수:"+(cnt+1)+"/ 소수가 아닙니다.");
 		}
 	}
 }
