@@ -50,9 +50,13 @@ public class Test4 {
 		String pNum = sc.next();
 		
 		//beginIndex부터 endIndex까지 출력한다.
+<<<<<<< HEAD:201214_HW_Array/src/kh/java/test/array/Test4.java
 		String result = pNum.substring(0, 3)+"****"+pNum.substring(7, 11);
 		System.out.println(result);
 		//System.out.println(pNum.substring(0, 3)+"****"+pNum.substring(7, 11));
+=======
+		System.out.println(pNum.substring(0, 3)+"****"+pNum.substring(7, 11));
+>>>>>>> 6448918c7fb4fc8fab328f5bf003999cc77b1ef8:201214_HW/src/kh/java/test/array/Test4.java
 	}
 
 }
