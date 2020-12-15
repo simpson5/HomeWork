@@ -6,7 +6,7 @@ public class SnailArray {
 
 	public static void main(String[] args) {
 		SnailArray s = new SnailArray();
-		s.test1();
+		s.test2();
 
 	}
 	
@@ -78,38 +78,31 @@ public class SnailArray {
 		int x= sc.nextInt();
 		int[][] arr = new int[x][x];
 		int num = 1;
-		arr[0][0]=0;
-		//행 열 전환 수 1 일경우 행증가 -1 일경우 열증가
+		//행/열 증감 관련수
 		int swt = 1;
 		int r = 0;
-		int c = 0;
+		int c = -1;
 		
-		while(true) {
-			int cnt = 0;
-			if(swt==1) {
-				for(int i = 0; i < x; i++) {
-					arr[r][c+i]++;
-					cnt++;
-					if(cnt == x-1) {
-						swt *= -1;
-						break;
-					}
-				}
+		while(x>0) {
+			for(int i = 0; i < x; i++) {
+				c += swt;
+				arr[r][c] = num;
+				num++;
 			}
-			else {
-				for(int i = 0; i < x; i++) {
-					arr[r+i][c]++;
-					if(c+i == x-1) {
-						swt *= -1;
-						break;
-					}
-				}
+			x--;
+			if(x==0) break;
+			for(int i = 0; i < x; i++) {
+				r += swt;
+				arr[r][c] = num;
+				num++;
 			}
-			break;
+			swt *= -1;
 		}
-		for(int i = 0; i < x; i++) {
-			for(int j = 0; j < x; j++) {
-				System.out.print(arr[i][j]);
+			
+		
+		for(int i = 0; i < arr.length; i++) {
+			for(int j = 0; j < arr[i].length; j++) {
+				System.out.print("["+arr[i][j]+"]");
 			}
 			System.out.println();
 		}
