@@ -14,6 +14,7 @@ public class EmpTest {
 	public void mainMenu() {
 		while(true) {
 			Employee e = new Employee();
+			
 			Scanner sc = new Scanner(System.in);
 			System.out.println("=====사원 정보 관리 프로그램=====");
 			System.out.println("1. 새 사원 정보 입력");
@@ -31,7 +32,12 @@ public class EmpTest {
 					e = null;
 					break;
 				case 3:
-					e.empOutput();
+					if(e.getEmpName() != null) {
+						e.empOutput();
+					}
+					else {
+						System.out.println("정보가 없습니다.");
+					}
 					break;
 				case 4:
 					return;
