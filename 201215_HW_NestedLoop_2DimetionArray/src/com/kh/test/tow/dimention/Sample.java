@@ -1,5 +1,7 @@
 package com.kh.test.tow.dimention;
 
+import java.util.Arrays;
+
 public class Sample {
 	public static void main(String[] args) {
 		Sample s =new Sample();
@@ -10,7 +12,7 @@ public class Sample {
 //	2. 1~100사이의 임의의 정수를 모든 방에 기록함
 //	3. 각 행별 열의 합계가 5의 배수인 행열값만 출력함
 //  이놈은 5만 찾아서 출력했네요....
-	public void test() {
+	public void test1() {
 		int cnt =0;
 		int[][] arr = new int[3][5];
 		for(int i = 0; i < arr.length; i++) {
@@ -79,6 +81,8 @@ public class Sample {
 				System.out.print(":"+sum);
 			}
 			System.out.println();
+			
+			//Arrays.toString(a) 배열의 요소를 확인하는 메서드
 		}
 	}
 }

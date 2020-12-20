@@ -18,10 +18,7 @@ public class Test3 {
 		for(int i = 0; i < (num*2-1); i++) {
 			System.out.print(i+": ");
 			for(int j = 0; j < num; j++) {
-				if(i < num &&i >=j){
-					System.out.print('●');
-				}
-				else if(i==j) {
+				if(i < num && i >= j){
 					System.out.print('●');
 				}
 				else if(i >= num && j > i-num) {
