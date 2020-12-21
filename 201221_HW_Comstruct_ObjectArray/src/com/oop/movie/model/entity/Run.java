@@ -19,8 +19,7 @@ public class Run {
 		System.out.println(m1.information());
 		System.out.println(m2.information());
 		System.out.println(m3.information());
-		System.out.println(m4.information());
-		
+		System.out.println(m4.information());	
 	}
 
 }

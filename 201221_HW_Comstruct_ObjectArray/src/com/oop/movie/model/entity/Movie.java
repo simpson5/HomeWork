@@ -55,7 +55,7 @@ public class Movie {
 		if(this.director != null) str += ", "+ this.director;
 			for(String x : this.casting) {
 				if(x != null) {
-					str += ","+ x;
+					str += ", "+ x;
 				}
 			}
 			//Calander 년도, 달 값 가져오기.

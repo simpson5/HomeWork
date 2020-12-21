@@ -9,7 +9,7 @@ public class CoffeeManager {
 	private Scanner sc = new Scanner(System.in);
 	
 	/**
-	 * Person 정보 입력 메소드
+	 * Coffee 정보 입력 메소드
 	 */
 	public void inputCoffee() {
 		for(int i = 0; i < arr.length; i++) {
@@ -23,7 +23,7 @@ public class CoffeeManager {
 	}
 	
 	/**
-	 * Person 정보 출력 메소드
+	 * Coffee 정보 출력 메소드
 	 */
 	public void printCoffee() {
 		for(Coffee x : arr) {
