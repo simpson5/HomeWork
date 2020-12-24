@@ -1,11 +1,12 @@
 package com.oop.movie.model.entity;
 
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class Movie {
 	private String movieTitle;
 	private String director;
-	private String[] casting = new String[5];
+	private String[] casting;
 	private Calendar release;
 	
 	public Movie() {}	
@@ -53,11 +54,14 @@ public class Movie {
 	public String information() {
 		String str = this.movieTitle;
 		if(this.director != null) str += ", "+ this.director;
-			for(String x : this.casting) {
-				if(x != null) {
-					str += ", "+ x;
-				}
-			}
+		
+//			for(String x : this.casting) {
+//				if(x != null) {
+//					str += ", "+ x;
+//				}
+//			}
+		str += Arrays.toString(casting);
+		
 			//Calander 년도, 달 값 가져오기.
 			if(this.release != null) {
 				str += ", "+ this.release.get(Calendar.YEAR)+"."+(this.release.get(Calendar.MONTH)-1);

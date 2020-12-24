@@ -26,7 +26,7 @@ public class MemberManager {
 	
 	public void vipInsert(Vip v) {
 		v = new Vip(v.getName(), v.getGrade(), v.getPoint());
-		vArr[k] = v;
+		vArr[j] = v;
 		k++;
 	}
 	
