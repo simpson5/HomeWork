@@ -13,6 +13,7 @@ public class Run {
 		Member[] mArr = new Member[3];
 		String[] token = new String[tokenizer.countTokens()];
 		int i = 0;
+		
 		while(tokenizer.hasMoreTokens()) {
 			token[i] = tokenizer.nextToken();
 			i++;
@@ -21,25 +22,16 @@ public class Run {
 		System.out.println(token[4]);
 		
 		//토큰을 각 객체에 대입
-		mArr[0] = new Member(Integer.parseInt(token[0]),
-				token[1],
-				Integer.parseInt(token[2]),
-				Integer.parseInt(token[3]),
-				change(token[4]));
-		mArr[1] = new Member(Integer.parseInt(token[5]),
-				token[6],
-				Integer.parseInt(token[7]),
-				Integer.parseInt(token[8]),
-				change(token[9]));
-		mArr[2] = new Member(Integer.parseInt(token[10]),
-				token[11],
-				Integer.parseInt(token[12]),
-				Integer.parseInt(token[13]),
-				change(token[14]));
+		for(int j = 0; j < 3; j++) {
+		mArr[j] = new Member(Integer.parseInt(token[0 + 5 * j]),
+				token[1 + 5 * j],
+				Integer.parseInt(token[2 + 5 * j]),
+				Integer.parseInt(token[3 + 5 * j]),
+				change(token[4 + 5 * j]));
 		
-		System.out.println(mArr[0].impormation());
-		System.out.println(mArr[1].impormation());
-		System.out.println(mArr[2].impormation());
+		System.out.println(mArr[i].impormation());
+		}
+		
 	}
 	
 	//문자열을 캘린더로 바꾸기

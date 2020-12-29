@@ -18,8 +18,10 @@ public class TokenTest {
 			i ++;
 		}
 		for(char c : ch) {
-			System.out.println(c);
+			System.out.print(c + " ");
 		}
+		
+		System.out.println();
 		
 		String str = "";
 		
