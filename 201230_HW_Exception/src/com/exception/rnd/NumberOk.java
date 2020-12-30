@@ -5,25 +5,38 @@ import java.util.Scanner;
 
 public class NumberOk {
 	Scanner sc = new Scanner(System.in);
-	int randomNum = (int)(Math.random()*100) + 1;
-	static int max = 100;
-	static int min = 0;
+	int randomNum;
+	int max = 100;
+	int min = 0;
 
 	public static void main(String[] args) {
 		NumberOk no = new NumberOk();
+		while(true) {
+			if(no.startgame() == 'n') {
+				break;
+			}
+		}
+
+	}
+	
+	public char startgame() {
+		randomNum = (int)(Math.random()*100) + 1;
 		int cnt = 0;
 		while(true) {
+			System.out.println(randomNum);
 			int ans= 0;
 			try {
-				ans = no.getNumber();
+				ans = getNumber();
 				cnt ++;
 			} catch (NumberRangeException e) {
 				System.out.println(max + "보다 작고 " + min + " 보다 크게 입력하세요!");
 			}
-			int check = no.checkNumber(ans);
+			int check = checkNumber(ans);
 			if(check == 0) {
-				System.out.println(cnt + "번째에 정답 "+ans+ "맞춤.");
-				break;
+				System.out.println(cnt + "번째에 정답 "+randomNum+ "맞춤.");
+				System.out.println("==========================");
+				System.out.println("계속 하시겠습니까?(y/n)");
+				return sc.next().charAt(0);
 			}
 			else if(check == 1){
 				System.out.println(cnt + ": 정답보다 크다.");
@@ -32,7 +45,6 @@ public class NumberOk {
 				System.out.println(cnt + ": 정답보다 작다.");
 			}
 		}
-
 	}
 	
 	public int getNumber() throws NumberRangeException {
