@@ -19,8 +19,6 @@ public class Run {
 			i++;
 		}
 		
-		System.out.println(token[4]);
-		
 		//토큰을 각 객체에 대입
 		for(int j = 0; j < 3; j++) {
 		mArr[j] = new Member(Integer.parseInt(token[0 + 5 * j]),
@@ -29,7 +27,7 @@ public class Run {
 				Integer.parseInt(token[3 + 5 * j]),
 				change(token[4 + 5 * j]));
 		
-		System.out.println(mArr[i].impormation());
+		System.out.println(mArr[j].impormation());
 		}
 		
 	}
@@ -44,5 +42,4 @@ public class Run {
 		
 		return cal;
 	}
-
 }

@@ -1,6 +1,6 @@
 package kh.java.inherit.model.vo;
 
-public class Gold extends Silver {
+public class Gold extends Member {
 	
 	public Gold(String name, String grade, int point) {
 		super(name, grade, point);
@@ -9,6 +9,6 @@ public class Gold extends Silver {
 	
 	@Override
 	public double getEjaPoint() {
-		return super.getPoint() * 0.05;
+		return this.point * 0.05;
 	}
 }

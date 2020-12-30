@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class NumberOk {
 	Scanner sc = new Scanner(System.in);
 	int randomNum;
-	int max = 100;
-	int min = 0;
+	int max;
+	int min;
 
 	public static void main(String[] args) {
 		NumberOk no = new NumberOk();
@@ -21,6 +21,8 @@ public class NumberOk {
 	
 	public char startgame() {
 		randomNum = (int)(Math.random()*100) + 1;
+		max = 100;
+		min = 0;
 		int cnt = 0;
 		while(true) {
 			System.out.println(randomNum);
