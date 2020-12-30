@@ -16,10 +16,10 @@ public class NumberOk {
 			int ans= 0;
 			try {
 				ans = no.getNumber();
+				cnt ++;
 			} catch (NumberRangeException e) {
 				System.out.println(max + "보다 작고 " + min + " 보다 크게 입력하세요!");
 			}
-			cnt ++;
 			int check = no.checkNumber(ans);
 			if(check == 0) {
 				System.out.println(cnt + "번째에 정답 "+ans+ "맞춤.");
@@ -41,7 +41,7 @@ public class NumberOk {
 				System.out.print("수를 입력하시오 : ");
 				int num = sc.nextInt();
 				//최대 최소 숫자에서 벋어난 경우 && 최대 최소 값 조정하기
-				if(num>max || num<min) {
+				if(num>=max || num<=min) {
 					throw new NumberRangeException();
 				}
 				else if(num<max && num>randomNum) {
