@@ -29,7 +29,7 @@ public class MyNote {
 				break;
 			}
 			try {
-				sb.append(data);
+				sb.append(data + "\n");
 				//sc.nextLine();
 			} catch(NullPointerException e) {
 				e.printStackTrace();
@@ -68,6 +68,8 @@ public class MyNote {
 			while((data = br.readLine()) != null) {
 				System.out.println(data);
 			}
+		} catch(FileNotFoundException e){
+			System.out.println("파일이 없어요!");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -83,10 +85,11 @@ public class MyNote {
 		StringBuilder sb = new StringBuilder();
 		try(BufferedReader br = new BufferedReader(new FileReader(f))){
 			while((str = br.readLine()) != null) {
-				sb.append(str);
+				sb.append(str + "\n");
 			}
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+		} catch(FileNotFoundException e){
+			System.out.println("파일이 없어요!");
+		} catch (IOException e) {
 			e1.printStackTrace();
 		}
 		String data = "";
