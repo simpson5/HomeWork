@@ -19,6 +19,7 @@ public class MyNote {
 		
 	}
 	
+	//파일 저장
 	public void fileSave() {
 		StringBuilder sb = new StringBuilder();
 		String data = "";
@@ -42,27 +43,25 @@ public class MyNote {
 			System.out.print("저장할 파일명 : ");
 			String name = sc.next();
 			File f = new File("data/"+name+".txt");
-			String str = null;
+			//StringBuilder를 그대로 쓸수 없으니 스트링으로 변환시키고 대입
+			String str = sb.toString();
+			//버퍼 스트림은 한번에 문자열을 쓰고 읽을 수 있다. 굳이 바이트 같이 int 단위로 끊을 필요가 없음.
 			try(BufferedWriter bw = new BufferedWriter(new FileWriter(f))){
-				while((str = sb.substring(0, 1)) != null) {
 					bw.write(str);
-					sb.deleteCharAt(0);
-				}
 			} catch (IOException e) {
 				e.printStackTrace();
-			} catch (StringIndexOutOfBoundsException e) {
 			}
 			System.out.println("성공적으로 저장!");
 		}
 	}
 	
+	//파일 열기
 	public void fileOpen() {
 		System.out.print("열기할 파일명 : ");
 		String name = sc.next();
 		File f = new File("data/"+name+".txt");
 		try(BufferedReader br = new BufferedReader(new FileReader(f))) {
 			String data = null;
-			
 			while((data = br.readLine()) != null) {
 				System.out.println(data);
 			}
@@ -74,50 +73,52 @@ public class MyNote {
 		
 	}
 	
+	//두번쨰 방법
 	public void fileAppend() {
 		System.out.print("수정할 파일명 : ");
 		String name = sc.nextLine();
 		File f = new File("data/"+name+".txt");
 		
-		String str = null;
 		StringBuilder sb = new StringBuilder();
 		//파일 여부 체크
 		try(BufferedReader br = new BufferedReader(new FileReader(f))){
+			String data = null;
+			while((data = br.readLine()) != null) {
+				System.out.println(data);
+			}
 		} catch(FileNotFoundException e){
 			System.out.println("파일이 없어요!");
+			return;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		//수정 내용 입력
-		String data = "";
+		String data2 = "";
 		while(true){
 			System.out.println("파일에 수정할 내용을 입력하시오");
-			data = sc.nextLine();
-			if(data.equals("exit")) {
+			data2 = sc.nextLine();
+			if(data2.equals("exit")) {
 				break;
 			}
 			try {
-				sb.append(data + "\n");
+				sb.append(data2 + "\n");
 			} catch(NullPointerException e) {
 				e.printStackTrace();
 			}
 		
 		}
 		
+		//수정 확인
 		System.out.println("수정하시겠습니까? (y/n)");
 		char y = sc.next().charAt(0);
-		
 		if(y == 'y' || y == 'Y') {
 			//출력 스트림에 두번쨰 매개변수에 true를 사용하면 이어서 출력 가능
+			String str = sb.toString();
 			try(BufferedWriter bw = new BufferedWriter(new FileWriter(f , true)))
 			{	
-				while((str = sb.substring(0, 1)) != null) {
 					bw.write(str);
-					sb.deleteCharAt(0);
-				}
 			} catch (IOException e) {
 				e.printStackTrace();
-			} catch (StringIndexOutOfBoundsException e) {
 			}
 			System.out.println("성공적으로 수정!");
 		}

@@ -21,6 +21,7 @@ public class BookManager {
 	public BookManager() {
 	}
 
+	//객체 저장
 	public void fileSave() {
 		Book[] b = new Book[5];
 		b[0] = new Book("simpson", "simp", 1000, LocalDate.of(2020, 4, 6), 0.1);
@@ -49,6 +50,7 @@ public class BookManager {
 		System.out.println("book.dat에 저장 완료!");
 	}
 	
+	//객체 출력
 	public void fileLoad() {
 		Book[] b = new Book[10];
 		int i = 0;
