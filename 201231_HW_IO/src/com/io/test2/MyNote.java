@@ -51,7 +51,6 @@ public class MyNote {
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
-				//이놈 어떻게 사라지게 하냐...
 			} catch (StringIndexOutOfBoundsException e) {
 			}
 			System.out.println("성공적으로 저장!");
@@ -90,7 +89,7 @@ public class MyNote {
 		} catch(FileNotFoundException e){
 			System.out.println("파일이 없어요!");
 		} catch (IOException e) {
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
 		String data = "";
 		while(true){
@@ -121,7 +120,6 @@ public class MyNote {
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
-				//이놈 어떻게 사라지게 하냐...
 			} catch (StringIndexOutOfBoundsException e) {
 			}
 			System.out.println("성공적으로 수정!");
