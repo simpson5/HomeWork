@@ -71,6 +71,11 @@ public class MusicMenu {
 				case 8:
 					sortMenu();
 					break;
+				//확인용
+				case 9:
+					Music m = new Music("마","6");
+					manager.check(m);
+					break;
 				//0. 종료
 				case 0:
 					System.out.println("종료합니다");

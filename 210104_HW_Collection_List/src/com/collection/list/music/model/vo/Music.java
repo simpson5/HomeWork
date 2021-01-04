@@ -1,5 +1,7 @@
 package com.collection.list.music.model.vo;
 
+import java.util.Objects;
+
 public class Music {
 	private String title;
 	private String singer;
@@ -46,7 +48,7 @@ public class Music {
 		}
 	}
 	
-	//둘다 같을 경우를 확인하는 equals
+	//둘다 같을 경우를 확인하는 equals -- hashCode 를 이용하면 따로 만들 필요가 없다!
 	public boolean equals2(Object obj) {
 		//Music 형변환자 타입 검사
 		if (!(obj instanceof Music))
@@ -58,5 +60,12 @@ public class Music {
 		else {
 			return false;
 		}
+	}
+	
+	//hashCode로 주소값 비교해보기
+	//두객체가 같은 객체인지 확인하는 메서드...
+	@Override
+	public int hashCode() {
+		return Objects.hash(title, singer);
 	}
 }

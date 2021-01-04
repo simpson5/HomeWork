@@ -53,12 +53,13 @@ public class MusicManager {
 	
 	//5. 특정곡을 바꾸는 메소드(이전 음악객체, 새 음악객체를 전달해서 교체) 교체 성공여부를 리턴
 	public boolean replaceMusic(Music oldMusic, Music newMusic) {
+		//해쉬코드로 비교
 		//확인용 임시 리스트
 		ArrayList<Music> temp = new ArrayList<Music>();
-		
+		//일일이 하나 씩 확인 -- 비효율 적임
 		for(Music m : mList ) {
-			//음악이 있는지 -- 제목과 가수가 둘다 참이어야 한다.
-			if(m.equals2(oldMusic)) {
+			//음악이 있는지 -- 제목과 가수가 둘다 참이어야 한다. m.equals2(oldMusic)
+			if(m.hashCode() == oldMusic.hashCode()) {
 				//해당 객체의 인덱스 추출
 				int i = mList.indexOf(oldMusic);
 				//해당 인덱스에 새로운 음악 교체
@@ -113,5 +114,11 @@ public class MusicManager {
 		Collections.sort(mList, c);
 		return mList;
 	}
-
+	
+	//equals, equals2, hashcode 비교
+	public void check(Music m) {
+		System.out.println(mList.get(0).equals(m));
+		System.out.println(mList.get(0).equals2(m));
+		System.out.println(mList.get(0).hashCode() == m.hashCode());
+	}
 }
