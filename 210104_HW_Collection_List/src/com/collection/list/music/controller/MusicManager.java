@@ -13,15 +13,13 @@ public class MusicManager {
 	private ArrayList<Music> mList = new ArrayList<Music>() {
 		{
 		//List 초기화 블럭
-		add(new Music("마","5"));
-		add(new Music("라","4"));
-		add(new Music("가","1"));
-		add(new Music("나","2"));
-		add(new Music("다","3"));
+		add(new Music("마라다나가","5"));
+		add(new Music("라다나가","45"));
+		add(new Music("가","12345"));
+		add(new Music("나가","22345"));
+		add(new Music("다나가","345"));
 		}
 	};
-	
-	
 	
 	//1. 음악리스트 리턴
 	public List<Music> selectList(){
@@ -78,9 +76,9 @@ public class MusicManager {
 		//출력용 임시 뮤직 리스트
 		ArrayList<Music> temp = new ArrayList<Music>();
 		
-		//원래 리스트에서 검사하여 equals가 트루일시 임시 리스트에 추가.
+		//검색하는 문자열을 포함하는 경우 임시 리스트에 추가
 		for(Music m : mList ) {
-			if(m.equals(new Music(title , ""))) {
+			if(m.getTitle().contains(title)) {
 				temp.add(m);
 			}
 		}
@@ -96,9 +94,9 @@ public class MusicManager {
 		//출력용 임시 뮤직 리스트
 		ArrayList<Music> temp = new ArrayList<Music>();
 				
-		//원래 리스트에서 검사하여 equals가 트루일시 임시 리스트에 추가.
+		//검색하는 문자열을 포함하는 경우 임시 리스트에 추가
 		for(Music m : mList ) {
-			if(m.equals(new Music("" , singer))) {
+			if(m.getSinger().contains(singer)) {
 				temp.add(m);
 			}
 		}
@@ -115,10 +113,11 @@ public class MusicManager {
 		return mList;
 	}
 	
-	//equals, equals2, hashcode 비교
+	//equals, equals2, hashCode 비교
 	public void check(Music m) {
 		System.out.println(mList.get(0).equals(m));
 		System.out.println(mList.get(0).equals2(m));
 		System.out.println(mList.get(0).hashCode() == m.hashCode());
+//		System.out.println(mList.);
 	}
 }

@@ -66,6 +66,7 @@ public class Music {
 	//두객체가 같은 객체인지 확인하는 메서드...
 	@Override
 	public int hashCode() {
+		//필드 값을 넣어 그 값이 저장될 위치 혹은 주소를 반환
 		return Objects.hash(title, singer);
 	}
 }

@@ -1,5 +1,6 @@
 package com.collection.list.music.view;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -35,9 +36,7 @@ public class MusicMenu {
 				case 1:
 					//System.out.println(manager.selectList());
 					//가시성 높이기 위해서 작성
-					for(Music arr : manager.selectList()) {
-						System.out.print(arr);
-					}
+					print(manager.selectList());
 					break;
 				//2. 마지막에 음악추가 
 				case 2:
@@ -61,17 +60,18 @@ public class MusicMenu {
 					break;
 				//6. 특정곡이 있는지 검사
 				case 6:
-					System.out.println(manager.searchMusicByTitle(inputTitle()));
+					print(manager.searchMusicByTitle(inputTitle()));
 					break;
 				//7. 가수명으로 검색
 				case 7:
-					System.out.println(manager.searchMusicBySinger(inputSinger()));
+					print(manager.searchMusicBySinger(inputSinger()));
 					break;
 				//8. 서브메뉴
 				case 8:
 					sortMenu();
 					break;
 				//확인용
+				//왜 equals 값은 거짓인데 hash 코드 값이 같은가?
 				case 9:
 					Music m = new Music("마","6");
 					manager.check(m);
@@ -151,6 +151,13 @@ public class MusicMenu {
 			case 5:
 				System.out.println("메인 메뉴로 돌아갑니다.");
 				return;
+		}
+	}
+	
+	//가시성 높이기 위함 출력 함수
+	public void print(List<Music> mArr) {
+		for(Music arr : mArr) {
+			System.out.print(arr);
 		}
 	}
 }
