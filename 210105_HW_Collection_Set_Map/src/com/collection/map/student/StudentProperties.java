@@ -3,7 +3,7 @@ package com.collection.map.student;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -30,11 +30,10 @@ public class StudentProperties {
 			e.printStackTrace();
 		}
 		//3. 키를 사용하여, 객체정보를 List<Student>에 저장하여 리턴함
-		String value = null;
 		Enumeration<?> en = prop.propertyNames();
 		while(en.hasMoreElements()) {
 			String name = (String)en.nextElement();
-			value = prop.getProperty(name);
+			String value = prop.getProperty(name);
 			//System.out.println(name + " = " + value);
 			// => ", " 으로 문자열 분리처리
 			StringTokenizer st = new StringTokenizer(value, ",");
@@ -66,12 +65,12 @@ public class StudentProperties {
 			engSum += std.getEng();
 		}
 		//3. 과목별 평균점수를 출력함
-		mathAvg = mathSum / 3.0;
-		korAvg = korSum / 3.0;
-		engAvg = engSum / 3.0;
-		System.out.println("수학 평균 : " + mathAvg);
-		System.out.println("국어 평균 : " + korAvg);
-		System.out.println("영어 평균 : " + engAvg);
+		mathAvg = mathSum / 5.0;
+		korAvg = korSum / 5.0;
+		engAvg = engSum / 5.0;
+		System.out.println("수학 평균 : " + cutDecimal(2, mathAvg));
+		System.out.println("국어 평균 : " + cutDecimal(2, korAvg));
+		System.out.println("영어 평균 : " + cutDecimal(2, engAvg));
 	}
 	
 	public void saveXMLFile(List<Student> stdtList){
@@ -90,4 +89,11 @@ public class StudentProperties {
 			e.printStackTrace();
 		}
 	}
+	
+	//소수점 자리 바꾸는 함수
+	public String cutDecimal(int cutSize, double value) { 
+		NumberFormat nf = NumberFormat.getNumberInstance();
+		nf.setMaximumFractionDigits(cutSize);
+		nf.setGroupingUsed(false);
+		return nf.format(value); }
 }

@@ -14,7 +14,8 @@ public class Student {
 		this.eng = eng;
 		this.math = math;
 		this.sum = this.kor + this.math + this.eng;
-		this.avg = this.sum / 3.0;
+		//소수점 2번째 자리까지
+		this.avg = (double)Math.round(this.sum *100 / 3.0)/100;
 	}
 	
 	public int getSno() {
