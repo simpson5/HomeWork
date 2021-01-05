@@ -12,6 +12,8 @@ public class memberTest {
 	public static void main(String[] args) {
 		memberTest mt = new memberTest();
 		mt.test0();
+		mt.test4();
+		mt.test3();
 		mt.test1();
 		mt.test2();
 
@@ -57,16 +59,29 @@ public class memberTest {
 	
 	//3. yooon 아이디 조회후 해당객체를 다음과 같이 수정하세요.
 	public void test3() {
-		
+		String key = null;
+		Set<Entry<String, Member>> entrySet = member.entrySet();
+		for(Entry<String, Member> entry : entrySet) {
+			if(entry.getValue().getUserId().equals("yooon")) {
+				key = entry.getKey();
+				break;
+			}
+		}
+		System.out.println(key);
+		member.get(key).setUserPwd("5678");
+		member.get(key).setUserName("윤동주");
+		member.get(key).setAge(27);
+		member.get(key).setPhoneNumber("01034563456");
 	}
 	
 	//4. sinsa 아이디 회원을 삭제하세요.
 	public void test4() {
 		String key = null;
-		
 		Set<Entry<String, Member>> entrySet = member.entrySet();
 		for(Entry<String, Member> entry : entrySet) {
-			entry.getValue();
+			if(entry.getValue().getUserId().equals("sinsa")) {
+				key = entry.getKey();
+			}
 		}
 		member.remove(key);
 	}
