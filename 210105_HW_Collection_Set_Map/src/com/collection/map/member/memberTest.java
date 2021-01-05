@@ -2,8 +2,10 @@ package com.collection.map.member;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,11 +17,12 @@ public class memberTest {
 	public static void main(String[] args) {
 		memberTest mt = new memberTest();
 		mt.test0(); //일단 저장...
+		mt.test1(); //출력
 		mt.test6(); //정렬
 		//mt.test4(); //제거
 		//mt.test5(); //제거2
 		//mt.test3(); //변경
-		//mt.test1(); //출력
+		mt.test1(); //출력
 		//mt.test2(); //확인
 
 	}
@@ -126,7 +129,8 @@ public class memberTest {
 		for(String key : keySet) {
 			mList.add(member.get(key));
 		}
-		Collections.sort(mList, new MemberIdAscending());
+		Comparator<Member> comp = new MemberIdAscending();
+		Collections.sort(mList, comp);
 		Iterator<Member> iter = mList.iterator();
 		
 		System.out.println("===============================");
@@ -136,9 +140,15 @@ public class memberTest {
 			System.out.printf("%s \t===== %s%n", m.getUserId(), m);
 		}
 		
+		//다시 멤버에 대입한다고 해도 member는 순서가 없어서 무의미
+		//LinkedHashMap
+		Map<String, Member> memberLinked = new LinkedHashMap<>();
 		for(Member m : mList) {
-			member.put(m.getUserId(), m);
+			memberLinked.put(m.getUserId(), m);
 		}
+		
+		Set<String> set = memberLinked.keySet();
+		printInfo2(set);
 	}
 	
 	//보기 좋게 만들었다!
