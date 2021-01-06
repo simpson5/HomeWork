@@ -39,12 +39,12 @@ public class MusicManager {
 	//4. 특정곡을 삭제하는 메소드(제목을 전달받아 검색후, 최초로 검색된 음악을 삭제) 삭제여부를 리턴
 	//제목만을 전달 받기 때문에 제목만 equals이 트루인지 검사
 	public boolean removeMusic(String s) {
-		//삭제가 될 경우 리턴
+		//삭제가 될 경우 true 리턴
 		if(mList.equals(new Music(s , ""))) {
 			mList.remove(new Music(s , ""));
 			return true;
 		}
-		//삭제를 못하면 false
+		//삭제를 못하면 false 리턴
 		System.out.println("삭제할 곡이 없습니다.");
 		return false;
 	}
@@ -83,7 +83,7 @@ public class MusicManager {
 			}
 		}
 		//임시 리스트 없는 경우
-		if(temp.size()>0) {
+		if(temp.size() == 0) {
 			System.out.println("검색결과가 없습니다.");
 		}
 		return temp;
@@ -101,7 +101,7 @@ public class MusicManager {
 			}
 		}
 		//임시 리스트 없는 경우
-		if(temp.size()>0) {
+		if(temp.size() == 0) {
 			System.out.println("검색결과가 없습니다.");
 		}
 		return temp;

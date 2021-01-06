@@ -34,6 +34,13 @@ public class Music {
 	
 	//특정 곡을 삭제할려면 equals가 true가 되야함
 	//제목과 가수 따로 비교
+	/**
+	 * 필드값이 같다면, 동등한 객체로 취급
+	 * 주소값이 같으면 >> 동일한 객체
+	 * 전달받은 obj == null >> 같을 수가 있냐?
+	 * getClass() 해당 타입을 가지고 온다. >> instanceof와 동일
+	 * 형변환을 ClassCastException 없이 변환할 수 있다.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		//Music 형변환자 타입 검사
