@@ -57,5 +57,9 @@ values(
 );
 
 select * from member;
+commit;
 
+select * from member where member_name like '%심%';
+
+desc member;
 

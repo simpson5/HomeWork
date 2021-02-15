@@ -31,6 +31,7 @@ public class MemberDao {
 	String user = "student";
 	String password = "student";
 
+	//회원 가입
 	public int insertMember(Member member) {
 		Connection conn = null;
 		String sql = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?, ?, default)";
@@ -91,6 +92,7 @@ public class MemberDao {
 		return result;
 	}
 
+	//전체 조회
 	public List<Member> selectAll() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -158,6 +160,7 @@ public class MemberDao {
 		return list;
 	}
 
+	//아이디로 한명 조회
 	public Member selectOne(String memberId) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -224,6 +227,7 @@ public class MemberDao {
 		return member;
 	}
 	
+	//이름 검색
 	public List<Member> selectName(String memberName) {
 		Connection conn = null;
 		String sql = "select * from member where member_name like ?";
@@ -239,16 +243,17 @@ public class MemberDao {
 			
 			// 4. PreparedStatement 객체생성(미완성 쿼리) 및 값 대입
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+memberName+"%");
+			pstmt.setString(1, "%" + memberName + "%");
 			
 			// 5. Statement 객체 실행. DB에 쿼리 요청
 			rset = pstmt.executeQuery();
 			
 			// 6. 응답처리 : DML=int리턴, DQL=ResultSet리턴 -> 자바객체로 전환 과정 필요
+			list = new ArrayList<>();
 			while(rset.next()) {
 				String memberId = rset.getString("member_id");
 				String password = rset.getString("password");
-				memberName = rset.getString("member_name");
+				String memberName2 = rset.getString("member_name");
 				String gender = rset.getString("gender"); 
 				int age = rset.getInt("age");
 				String email = rset.getString("email");
@@ -257,7 +262,7 @@ public class MemberDao {
 				String hobby = rset.getString("hobby");
 				Date enrollDate = rset.getDate("enroll_date");
 				
-				member = new Member(memberId, password, memberName, gender, age, email, phone, address, hobby, enrollDate);
+				member = new Member(memberId, password, memberName2, gender, age, email, phone, address, hobby, enrollDate);
 				list.add(member);
 			}
 		
@@ -285,11 +290,12 @@ public class MemberDao {
 		return list;
 	}
 
+	//정보 변경
 	public int modifyInfo(Member member) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String sql = "update member set password = ?, member_name = ?, gender = ?, age = ?, email = ?, phone = ?, address = ?, hobby = ? where member_id = ?";
+		String sql = "update member set password = ?, email = ?, phone = ?, address = ?, hobby = ? where member_id = ?";
 		
 		try {
 			// 1. Driver클래스 등록(최초 1회만 하면됨)
@@ -304,14 +310,11 @@ public class MemberDao {
 			// 4. PreparedStatement 객체생성(미완성 쿼리) 및 값 대입
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getPassword());
-			pstmt.setString(2, member.getMemberName());
-			pstmt.setString(3, member.getGender());
-			pstmt.setInt(4, member.getAge());
-			pstmt.setString(5, member.getEmail());
-			pstmt.setString(6, member.getPhone());
-			pstmt.setString(7, member.getAddress());
-			pstmt.setString(8, member.getHobby());
-			pstmt.setString(9, member.getMemberId());
+			pstmt.setString(2, member.getEmail());
+			pstmt.setString(3, member.getPhone());
+			pstmt.setString(4, member.getAddress());
+			pstmt.setString(5, member.getHobby());
+			pstmt.setString(6, member.getMemberId());
 
 			// 5. Statement 객체 실행. DB에 쿼리 요청
 			// 6. 응답처리 : DML=int리턴, DQL=ResultSet리턴 -> 자바객체로 전환 과정 필요
@@ -347,6 +350,7 @@ public class MemberDao {
 		return result;
 	}
 	
+	//회원 삭제
 	public int deleteInfo(Member member) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -401,6 +405,7 @@ public class MemberDao {
 		return result;
 	}
 	
+	//회원 확인
 	public Member confirmMember(String memberId, String memberPassword) {
 		Connection conn = null;
 		String sql = "select * from member where member_id = ? and password = ?";

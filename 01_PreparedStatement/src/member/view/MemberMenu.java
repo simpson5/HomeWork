@@ -35,20 +35,24 @@ public class MemberMenu {
 			String memberPassWord = null;
 			
 			switch(choice) {
+				//전체 조회
 				case 1:
 					list = memberController.selectAll();
 					displayMemberList(list);
 					break;
+				//아이디로 한명 조회
 				case 2:
 					memberId = inputMemberId(); 
 					member = memberController.selectOne(memberId);
 					displayMember(member);
 					break;
+				//이름 여러명 조회
 				case 3:
 					memberName = inputMemberName();
 					list = memberController.selectName(memberName);
 					displayMemberList(list);
 					break;
+				//회원 가입
 				case 4:
 					//1. 신규회원정보 입력 -> Member 객체
 					member = inputMember();
@@ -59,8 +63,9 @@ public class MemberMenu {
 					msg = result > 0 ? "회원 가입 성공!" : "회원 가입 실패!";
 					displayMsg(msg);
 					break;
+				//회원 정보 변경
 				case 5:
-					System.out.println("회원정보변경");
+					System.out.println("회원 정보 변경");
 					memberId = inputMemberId();
 					memberPassWord = inputMemberPassWord();
 					member = memberController.confirmMember(memberId,memberPassWord);
@@ -81,6 +86,7 @@ public class MemberMenu {
 						displayMember(member);
 					}
 					break;
+				//회원 탈퇴
 				case 6:
 					System.out.println("회원 탈퇴");
 					memberId = inputMemberId();
