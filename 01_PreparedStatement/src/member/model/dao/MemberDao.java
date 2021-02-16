@@ -119,7 +119,7 @@ public class MemberDao {
 				String password = rset.getString("password");
 				String memberName = rset.getString("member_name");
 				String gender = rset.getString("gender");
-				int age = rset.getInt("password");
+				int age = rset.getInt("age");
 				String email= rset.getString("email");
 				String phone = rset.getString("phone");
 				String address = rset.getString("address");
@@ -464,5 +464,57 @@ public class MemberDao {
 			}
 		}
 		return member;
+	}
+
+	public int dummyMember(String id) {
+		Connection conn = null;
+		String sql = "insert into member values(?, 'dum', 'dum', 'M', null, 'null', 'dum','null', 'null', default)";
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			//1. 드라이버 클래스 등록(최초 1회)
+			Class.forName(driverClass);
+			//2. Connection객체 생성(url, user, password)
+			conn = DriverManager.getConnection(url, user, password);
+			//3. 자동 커밋 여부 설정(DML) : true(기본값) / false -> app에서 직접 트랜젝션 제어
+			conn.setAutoCommit(false);
+			//4. preparedStatement객체생성(미완성 쿼리) 및 값 대입
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			//5. Statement 객체 실행. DB에 쿼리 요청
+			//6. 응답처리 DML : int 리턴, DQL : ResultSet 리턴 -> 자바객체로 전환
+			result = pstmt.executeUpdate();
+			
+			//7. 트랜잭션처리(DML)
+			if (result > 0 )
+				conn.commit();
+			else
+				conn.rollback();
+
+		} catch (ClassNotFoundException e) {
+			// ojdbc6.jar 프로젝트 연동 실패!
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//8. 자원반납(생성의 역순)
+			try {
+				if(pstmt != null)
+					pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			try {
+				if(conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
 	}
 }

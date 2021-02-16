@@ -19,6 +19,7 @@ public class MemberMenu {
 				+ "4. 회원 가입\n"
 				+ "5. 회원 정보변경\n"
 				+ "6. 회원 탈퇴\n"
+				+ "7. 더미 회원 생성\n"
 				+ "0. 프로그램 끝내기\n"
 				+ "--------------------------------\n"
 				+ "선택 : ";
@@ -108,6 +109,15 @@ public class MemberMenu {
 						displayMember(member);
 					}
 					break;
+				//더미 생성
+				case 7:
+					System.out.println("아이디 : ");
+					String id = sc.next();
+					result = 0;
+					result = memberController.dummyMember(id);
+					msg = result > 0 ? "더미 생성 성공!" : "더미 생성 실패!";
+					displayMsg(msg);
+					break;
 				case 0:
 					System.out.print("정말로 끝내시겠니까?(y/n) : ");
 					if(sc.next().charAt(0) == 'y')
@@ -158,7 +168,7 @@ public class MemberMenu {
 	 * @return
 	 */
 	private String inputMemberId() {
-		System.out.println("조회할 아이디 입력 : ");
+		System.out.print("조회할 아이디 입력 : ");
 		return sc.next();
 	}
 

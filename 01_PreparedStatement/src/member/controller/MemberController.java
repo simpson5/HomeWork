@@ -48,4 +48,8 @@ public class MemberController {
 	public Member confirmMember(String memberId, String memberPassword) {
 		return memberDao.confirmMember(memberId, memberPassword);
 	}
+
+	public int dummyMember(String id) {
+		return memberDao.dummyMember(id);
+	}
 }

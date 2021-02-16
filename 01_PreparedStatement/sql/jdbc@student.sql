@@ -52,7 +52,7 @@ values(
 
 insert into member
 values(
-    'black', '0815', '깜', 'F', null, 'null', '01099889988',
+    'black', 'dum', 'dum', 'M', null, 'null', 'dum',
     'null', 'null', default
 );
 
