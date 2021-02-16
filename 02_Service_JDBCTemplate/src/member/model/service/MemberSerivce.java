@@ -33,6 +33,7 @@ public class MemberSerivce {
 	
 	private MemberDao memberDao = new MemberDao();
 	
+	// 전체 조회
 	public List<Member> selectAll() {
 		Connection conn = getConnection();
 		List<Member> list = memberDao.selectAll(conn);
@@ -40,6 +41,7 @@ public class MemberSerivce {
 		return list;
 	}
 
+	// 회원 가입
 	public int insertMember(Member member) {
 		Connection conn = getConnection();
 		int result = memberDao.insetMember(conn, member);
@@ -49,6 +51,7 @@ public class MemberSerivce {
 		return result;
 	}
 
+	// 아이디로 조회
 	public List<Member> searchMemberId(String memberId) {
 		Connection conn = getConnection();
 		List<Member> list = memberDao.searchMemberId(conn, memberId);
@@ -56,6 +59,7 @@ public class MemberSerivce {
 		return list;
 	}
 
+	// 이름으로 조회
 	public List<Member> searchSearchName(String searchName) {
 		Connection conn = getConnection();
 		List<Member> list = memberDao.searchSearchName(conn, searchName);
@@ -63,6 +67,7 @@ public class MemberSerivce {
 		return list;
 	}
 
+	// 로그인
 	public Member login(String memberId, String password) {
 		Connection conn = getConnection();
 		Member member = memberDao.login(conn, memberId, password);
@@ -70,6 +75,7 @@ public class MemberSerivce {
 		return member;
 	}
 
+	// 정보변경(암호, 주소, 이메일, 전화번호)
 	public int updateInfo(Member member) {
 		Connection conn = getConnection();
 		int result = memberDao.updateInfo(conn, member);
@@ -79,6 +85,7 @@ public class MemberSerivce {
 		return result;
 	}
 
+	// 회원 탈퇴
 	public int deleteMember(Member member) {
 		Connection conn = getConnection();
 		int result = memberDao.deleteMember(conn, member);

@@ -14,6 +14,7 @@ import static common.JDBCTemplate.*;
 
 public class MemberDao {
 
+	//전체 조회
 	public List<Member> selectAll(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -55,6 +56,7 @@ public class MemberDao {
 		return list;
 	}
 
+	//회원 가입
 	public int insetMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -85,6 +87,7 @@ public class MemberDao {
 		return result;
 	}
 
+	// 아이디로 조회
 	public List<Member> searchMemberId(Connection conn, String memberId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -128,6 +131,7 @@ public class MemberDao {
 		return list;
 	}
 
+	// 이름으로 조회
 	public List<Member> searchSearchName(Connection conn, String searchName) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -217,7 +221,7 @@ public class MemberDao {
 		return member;
 	}
 
-	//회원 정보 변경
+	//회원 정보 변경(암호, 주소, 이메일, 전화번호)
 	public int updateInfo(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		String sql = "update member set password = ?, email = ?, phone = ?, address = ?, hobby = ? where member_id = ?";
@@ -247,6 +251,7 @@ public class MemberDao {
 		return result;
 	}
 
+	// 회원 탈퇴
 	public int deleteMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		String sql = "delete member where member_id = ?";

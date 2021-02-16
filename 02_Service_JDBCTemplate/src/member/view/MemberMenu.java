@@ -12,12 +12,13 @@ public class MemberMenu {
 	protected MemberController memberController = new MemberController();
 
 	public void mainMenu() {
-		String menu = "================== 회원 관리 프로그래 ================= \n"
+		String menu = "================== 회원 관리 프로그램 ================= \n"
 					+ "1. 회원 전체 조회\n"
 					+ "2. 회원 아이디 조회\n"
 					+ "3. 회원 이름 조회\n"
 					+ "4. 회원 가입\n"
 					+ "5. 회원 정보변경, 탈퇴\n"
+					+ "6. 로그인\n"
 					+ "0. 프로그램 끝내기\n"
 					+ "--------------------------------\n"
 					+ "선택 : ";
@@ -68,6 +69,15 @@ public class MemberMenu {
 					}
 					System.out.println("");
 					break;
+				case "6":
+					//로그인
+					member = memberLogin(memberId, password, msg, member);
+					//서브메뉴
+					if(member != null) {
+						new SubMenu2().loginMenu(member);
+					}
+					System.out.println("");
+					break;
 				case "0":
 					System.out.print("정말 종료할거야? : ");
 					if(sc.next().charAt(0) == 'y')
@@ -93,7 +103,7 @@ public class MemberMenu {
 	 * 비밀번호 입력
 	 * @return
 	 */
-	protected String inputPassword() {
+	private String inputPassword() {
 		System.out.print("비밀번호 입력 : ");
 		return sc.next();
 	}

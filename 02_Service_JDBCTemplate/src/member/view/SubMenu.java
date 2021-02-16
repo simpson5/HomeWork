@@ -1,6 +1,5 @@
 package member.view;
 
-import java.util.List;
 import java.util.Scanner;
 
 import member.model.vo.Member;
@@ -10,7 +9,7 @@ public class SubMenu extends MemberMenu {
 	private Scanner sc = new Scanner(System.in);
 
 	public void updateMenu(Member member) {
-		String menu = "================== 회원 관리 프로그래 ================= \n"
+		String menu = "================== 정보 변경 ================= \n"
 				+ "1. 비밀번호 변경\n"
 				+ "2. 이메일 변경\n"
 				+ "3. 전화번호 변경\n"
@@ -29,34 +28,34 @@ public class SubMenu extends MemberMenu {
 			
 			switch(choice) {
 			case "1":
-				System.out.print("변경할 비밀번호");
+				System.out.print("변경할 비밀번호 : ");
 				update = update();
 				member.setPassword(update);
 				result(result, msg, member);
 				break;
 			case "2":
-				System.out.print("변경할 이메일");
+				System.out.print("변경할 이메일 : ");
 				update = update();
 				member.setEmail(update);
 				result(result, msg, member);
 				break;
 			case "3":
-				System.out.print("변경할 전봐번호");
+				System.out.print("변경할 전봐번호 : ");
 				update = update();
 				member.setPhone(update);
 				result(result, msg, member);
 				break;
 			case "4":
-				System.out.print("변경할 주소");
+				System.out.print("변경할 주소 : ");
 				update = update();
 				member.setAddress(update);
 				result(result, msg, member);
 				break;
 			case "5":
-				System.out.print("정말 삭제 하시겠습니까? : ");
+				System.out.print("정말 탈퇴 하시겠습니까? : ");
 				if(sc.next().charAt(0) == 'y') {
 					result = memberController.deleteMember(member);
-					msg = result > 0 ? "삭제 성공!" : "삭제 실패!";
+					msg = result > 0 ? "탈퇴 성공!" : "탈퇴 실패!";
 					displayMsg(msg);
 					return;
 				}
@@ -81,5 +80,4 @@ public class SubMenu extends MemberMenu {
 	private String update() {
 		return sc.next();
 	}
-
 }
