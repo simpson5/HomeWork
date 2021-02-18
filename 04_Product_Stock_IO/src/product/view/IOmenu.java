@@ -29,14 +29,14 @@ public class IOmenu extends ProductMenu {
 			//상품입고
 			case "2" :
 				System.out.println("입고");
-				productIO = inputProductIO("I");
+				productIO = inputProductIO("I", "입고 할");
 				result = productController.inputProductIO(productIO);
 				display("상품 입고",result);
 				break;
 			//상품출고
 			case "3" :
 				System.out.println("출고");
-				productIO = inputProductIO("O");
+				productIO = inputProductIO("O", "출고 할");
 				result = productController.inputProductIO(productIO);
 				display("상품 출고",result);
 				break;
@@ -52,10 +52,10 @@ public class IOmenu extends ProductMenu {
 		}
 	}
 
-	private ProductIO inputProductIO(String status) {
+	private ProductIO inputProductIO(String status, String msg) {
 		System.out.print("상품 아이디 : ");
 		String productId = sc.next();
-		System.out.print("상품 수 : ");
+		System.out.print(msg + " 상품 수 : ");
 		int amount = sc.nextInt();
 		return new ProductIO(productId, amount, status);
 	}
