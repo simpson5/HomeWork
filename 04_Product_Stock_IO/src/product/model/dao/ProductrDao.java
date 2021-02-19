@@ -90,14 +90,12 @@ public class ProductrDao {
 				int stock = rset.getInt("stock");
 				product = new Product(productId, productName, price, description, stock);
 			}
-
 		} catch (SQLException e) {
 			throw new ProductException("상품 아이디 조회", e);
 		} finally {
 			close(rset);
 			close(pstmt);
 		}
-		
 		return product;
 	}
 
@@ -130,7 +128,6 @@ public class ProductrDao {
 			close(rset);
 			close(pstmt);
 		}
-		
 		return list;
 	}
 
@@ -153,7 +150,6 @@ public class ProductrDao {
 		} finally {
 			close(pstmt);
 		}
-		
 		return result;
 	}
 
@@ -162,7 +158,7 @@ public class ProductrDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateInfo");
 		int result = 0;
-		
+	
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product.getProductName());
@@ -176,7 +172,6 @@ public class ProductrDao {
 		} finally {
 			close(pstmt);
 		}
-		
 		return result;
 	}
 
@@ -186,7 +181,6 @@ public class ProductrDao {
 		ResultSet rset = null;
 		String sql = prop.getProperty("IOselectAll");
 		List<Product> list = null;
-
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
@@ -201,7 +195,6 @@ public class ProductrDao {
 			
 				list.add(productIO);
 			}
-
 		} catch (SQLException e) {
 			throw new ProductException("입출고 정보 조회", e);
 		} finally {
@@ -216,7 +209,6 @@ public class ProductrDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("inputProductIO");
 		int result = 0;
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, productIO.getProductId());
@@ -226,13 +218,11 @@ public class ProductrDao {
 			
 			//입출고 오류 검사
 			errorIO(conn, productIO.getProductId());
-
 		} catch (SQLException e) {
 			throw new ProductException("상품 입출고", e);
 		} finally {
 			close(pstmt);
 		}
-		
 		return result;
 	}
 
@@ -241,18 +231,15 @@ public class ProductrDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deletProduct");
 		int result = 0;
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product.getProductId());
 			result = pstmt.executeUpdate();
-
 		} catch (SQLException e) {
 			throw new ProductException("상품 삭제", e);
 		} finally {
 			close(pstmt);
 		}
-		
 		return result;
 	}
 	
@@ -261,19 +248,17 @@ public class ProductrDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("IOselectOne");
-
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, productId);
 			rset = pstmt.executeQuery();
-
+			
 			// 잔고가 0보다 작을시 오류를 던짐
 			while(rset.next()) {
 				if(rset.getInt("stock") < 0) {
 					throw new ProductException("잔고가 마이너스 입니다.");
 				}
 			}
-
 		} catch (SQLException e) {
 			throw new ProductException("입출고 오류 검사", e);
 		} finally {
